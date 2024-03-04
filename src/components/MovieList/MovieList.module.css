@@ -1,0 +1,13 @@
+.MovieList {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.MovieListLink {
+  color: blue;
+}
+
+.MovieListLink:active {
+  color: palevioletred;
+}

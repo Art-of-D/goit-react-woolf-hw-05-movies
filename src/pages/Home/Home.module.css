@@ -1,0 +1,9 @@
+.HeadOne {
+  margin-left: 10px;
+}
+
+.HomeList {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

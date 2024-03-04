@@ -1,0 +1,7 @@
+.HomeElementLink {
+  color: blue;
+}
+
+.HomeElementLink:active {
+  color: palevioletred;
+}

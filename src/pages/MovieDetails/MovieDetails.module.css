@@ -1,0 +1,51 @@
+.BackButton {
+  display: flex;
+  margin: 5px;
+  font-size: 12px;
+  width: 100px;
+  padding-top: auto;
+  padding-bottom: auto;
+}
+
+.BackButtonArrow {
+  width: 12px;
+  height: 12px;
+}
+
+.FilmWrapper {
+  display: flex;
+  gap: 20px;
+  box-shadow: 0px 2px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+.FilmWrapperDescription {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+.MovieDetailsImg {
+  width: 250px;
+}
+
+.FilmWrapperDescription ul {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+  padding: 0;
+}
+
+.MovieDetailsAddInfo {
+  padding: 10px;
+  box-shadow: 0px 2px rgba(0, 0, 0, 0.2);
+}
+
+.MovieDetailsLink {
+  color: blue;
+  text-decoration: none;
+
+  &:global.active {
+    color: palevioletred;
+  }
+}

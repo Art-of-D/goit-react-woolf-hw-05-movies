@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { CommonLayout } from './Layout/CommonLayout';
 import React, { lazy, Suspense } from 'react';
+
 const Home = lazy(() =>
   import('../pages/Home/Home').then(module => ({ default: module.Home }))
 );

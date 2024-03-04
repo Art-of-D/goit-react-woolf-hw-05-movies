@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { getFilms } from 'api/films/getFilmsData';
 import styled from './Home.module.css';
 
-export const Home = ({}) => {
+const Home = () => {
   const [filmTrends, setFilmTrends] = useState({});
 
   useEffect(() => {
@@ -28,3 +28,5 @@ export const Home = ({}) => {
     </>
   );
 };
+
+export default Home;

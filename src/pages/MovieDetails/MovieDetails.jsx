@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 import { getFilmById } from 'api/films/getFilmsData';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [film, setFilm] = useState(null);
   const location = useLocation();
@@ -104,3 +104,5 @@ export const MovieDetails = () => {
     </>
   );
 };
+
+export default MovieDetails;

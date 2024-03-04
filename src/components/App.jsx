@@ -2,23 +2,11 @@ import { Route, Routes } from 'react-router-dom';
 import { CommonLayout } from './Layout/CommonLayout';
 import React, { lazy, Suspense } from 'react';
 
-const Home = lazy(() =>
-  import('../pages/Home/Home').then(module => ({ default: module.Home }))
-);
-const MovieDetails = lazy(() =>
-  import('../pages/MovieDetails/MovieDetails').then(module => ({
-    default: module.MovieDetails,
-  }))
-);
-const Movies = lazy(() =>
-  import('../pages/Movies/Movies').then(module => ({ default: module.Movies }))
-);
-const Cast = lazy(() =>
-  import('./Cast/Cast').then(module => ({ default: module.Cast }))
-);
-const Reviews = lazy(() =>
-  import('./Reviews/Reviews').then(module => ({ default: module.Reviews }))
-);
+const Home = lazy(() => import('../pages/Home/Home'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
+const Movies = lazy(() => import('../pages/Movies/Movies'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   return (

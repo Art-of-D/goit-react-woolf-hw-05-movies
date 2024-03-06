@@ -1,5 +1,5 @@
 import styled from './MoviesForm.module.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export const MoviesForm = ({ searchMovies }) => {
   const [input, setInput] = useState('');

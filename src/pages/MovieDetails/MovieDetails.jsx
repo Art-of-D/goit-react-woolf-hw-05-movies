@@ -1,5 +1,5 @@
 import styled from './MovieDetails.module.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import {
   Link,
   useLocation,
@@ -26,14 +26,7 @@ const MovieDetails = () => {
     const fetchFilm = async () => {
       try {
         const filmData = await getFilmById(movieId);
-        setFilm({
-          poster: 'https://image.tmdb.org/t/p/w500' + filmData.poster_path,
-          title: filmData.title,
-          releaseDate: filmData.release_date,
-          voteAverage: filmData.vote_average,
-          overview: filmData.overview,
-          genres: filmData.genres,
-        });
+        setFilm(filmData);
       } catch (error) {
         console.error('Error fetching film:', error);
       }
@@ -89,18 +82,28 @@ const MovieDetails = () => {
         <p>Additional information</p>
         <ul>
           <li>
-            <NavLink className={styled.MovieDetailsLink} to={'reviews'}>
+            <NavLink
+              state={{ from: location.state?.from || '/' }}
+              className={styled.MovieDetailsLink}
+              to={'reviews'}
+            >
               Reviews
             </NavLink>
           </li>
           <li>
-            <NavLink className={styled.MovieDetailsLink} to={'cast'}>
+            <NavLink
+              state={{ from: location.state?.from || '/' }}
+              className={styled.MovieDetailsLink}
+              to={'cast'}
+            >
               Cast
             </NavLink>
           </li>
         </ul>
       </div>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

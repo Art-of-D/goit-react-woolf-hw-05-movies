@@ -4,13 +4,13 @@ import { getFilms } from 'api/films/getFilmsData';
 import styled from './Home.module.css';
 
 const Home = () => {
-  const [filmTrends, setFilmTrends] = useState({});
+  const [filmTrends, setFilmTrends] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
         const response = await getFilms();
-        setFilmTrends(response);
+        setFilmTrends(response.results);
       } catch (error) {
         console.log(error);
       }
@@ -21,9 +21,7 @@ const Home = () => {
     <>
       <h1 className={styled.HeadOne}>Trending today</h1>
       <ul className={styled.HomeList}>
-        {Object.keys(filmTrends).length > 0 && (
-          <HomeElement filmTrends={filmTrends} />
-        )}
+        {filmTrends.length > 0 && <HomeElement filmTrends={filmTrends} />}
       </ul>
     </>
   );

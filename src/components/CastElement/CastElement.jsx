@@ -1,7 +1,6 @@
 import styled from './CastElement.module.css';
 
 export const CastElement = ({ cast }) => {
-  console.log('cast', cast);
   return (
     <>
       {cast.map(({ id, name, character, profile_path: profilePath }) => {

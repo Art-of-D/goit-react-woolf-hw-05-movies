@@ -26,7 +26,7 @@ export const getFilmByName = async name => {
 export const getFilmById = async movieId => {
   try {
     const film = await axios.get(`/movie/${movieId}`);
-    return film.data;
+    return formatDataById(film.data);
   } catch (e) {
     console.log(e);
   }
@@ -48,4 +48,22 @@ export const getFilmCast = async movieId => {
   } catch (e) {
     console.log(e);
   }
+};
+
+const formatDataById = ({
+  poster_path,
+  title,
+  release_date,
+  vote_average,
+  overview,
+  genres,
+}) => {
+  return {
+    poster: 'https://image.tmdb.org/t/p/w500' + poster_path,
+    title: title,
+    releaseDate: release_date,
+    voteAverage: vote_average,
+    overview: overview,
+    genres: genres,
+  };
 };

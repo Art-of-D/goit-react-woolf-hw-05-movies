@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getFilmCast } from 'api/films/getFilmsData';
 import { CastElement } from 'components/CastElement/CastElement';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
 
@@ -20,7 +20,6 @@ export const Cast = () => {
     fetchCast();
   }, [movieId]);
 
-  console.log('cast', cast);
   return (
     <>
       <ul className={styled.CastList}>
@@ -29,4 +28,5 @@ export const Cast = () => {
     </>
   );
 };
-//
+
+export default Cast;

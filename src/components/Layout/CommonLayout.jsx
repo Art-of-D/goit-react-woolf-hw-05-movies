@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 import styled from './CommonLayout.module.css';
 
 export const CommonLayout = () => {
@@ -14,7 +15,9 @@ export const CommonLayout = () => {
           </NavLink>
         </nav>
       </header>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

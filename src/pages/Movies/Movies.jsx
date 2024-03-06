@@ -1,53 +1,33 @@
 import { getFilmByName } from 'api/films/getFilmsData';
-import styled from './Movies.module.css';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { MovieList } from 'components/MovieList/MovieList';
+import { MoviesForm } from 'components/MoviesForm/MoviesForm';
 
 const Movies = () => {
-  const [input, setInput] = useState('');
-  const [params, setParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [filmList, setFilmList] = useState([]);
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    setParams({
+  const searchMovies = async input => {
+    setSearchParams({
       query: input,
     });
-    const response = await getFilmByName(input);
-    setFilmList(response.results);
-    setInput('');
   };
 
   useEffect(() => {
-    const fetchFilms = async () => {
-      const query = params.get('query');
-      if (query) {
+    const query = searchParams.get('query');
+    if (query) {
+      const fetchFilms = async () => {
         const response = await getFilmByName(query);
         setFilmList(response.results);
-      }
-    };
-    fetchFilms();
-  }, [params]);
+      };
+      fetchFilms();
+    }
+  }, [searchParams]);
 
   return (
     <>
-      <form className={styled.SearchForm} onSubmit={handleSubmit}>
-        <input
-          className={styled.SearchFormInput}
-          type="text"
-          autoComplete="off"
-          value={input}
-          onChange={e => {
-            setInput(e.target.value);
-          }}
-          autoFocus
-          placeholder="Search movies"
-        />
-        <button type="submit" className={styled.SearchFormButton}>
-          Search
-        </button>
-      </form>
+      <MoviesForm searchMovies={searchMovies} />
       {filmList && <MovieList filmList={filmList} />}
     </>
   );
